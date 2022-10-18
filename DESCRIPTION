@@ -1,0 +1,7 @@
+Imports:
+    DBI (>= 0.3.0),
+    methods,
+    SparkR,
+    rlang
+Suggests:
+    DBItest, testthat
