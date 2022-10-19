@@ -4,5 +4,5 @@
 #' @export
 setClass("SparkRResult",
   contains = "DBIResult",
-  slots = list(res = "SparkDataFrame", state = "environment")
+  slots = list(state = "environment", statement = "character")
 )
