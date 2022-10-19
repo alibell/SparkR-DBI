@@ -8,16 +8,18 @@ setMethod("dbFetch", "SparkRResult", function(res, n=-1, ...) {
     stop("Result cleared")
   }
     
+  sdf <- SparkR::sql(res@state$statement)
+
   if (n == 0) {
     return(SparkR::collect(
-        SparkR::limit(res@res, 0)
+        SparkR::limit(sdf, 0)
     ))
   }
     
   # Cannot collect with iterator with R, we shall collect everything
   if (is.null(res@state[["df"]])) {
     # Collecting the DF once
-    res@state[["df"]] <- SparkR::collect(res@res)
+    res@state[["df"]] <- SparkR::collect(sdf)
   }
   df <- res@state[["df"]]
     
