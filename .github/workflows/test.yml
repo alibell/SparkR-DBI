@@ -39,7 +39,7 @@ jobs:
         run: |
           ls $SPARK_HOME/R
       - name: Installating SparkR
-        run: |/lib
+        run: |
           R CMD INSTALL $SPARK_HOME/R/lib
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
