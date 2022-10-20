@@ -4,14 +4,14 @@ df <- data.frame(a = 1:3, b = c("a", "b", "c"))
 
 test_that("dbSendQuery produce a SparkResult object", {
     sdf <- SparkR::as.DataFrame(df)
-    SparkR::saveAsTable(sdf, "testTable", overwrite=T)
+    SparkR::saveAsTable(sdf, "testTable", mode="overwrite")
     res <- dbSendQuery(conn, "SELECT * FROM testTable")
     expect_s4_class(res, "SparkRResult")
 })
 
 test_that("dbColumnInfo produce the list and type of the columns", {
     sdf <- SparkR::as.DataFrame(df)
-    SparkR::saveAsTable(sdf, "testTable", overwrite=T)
+    SparkR::saveAsTable(sdf, "testTable", mode="overwrite")
     res <- dbSendQuery(conn, "SELECT * FROM testTable")
     info <- dbColumnInfo(res)
 
