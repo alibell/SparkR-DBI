@@ -45,7 +45,6 @@ jobs:
           pak-version: devel
           extra-packages: |
             any::devtools
-            SparkR=?ignore
       - name: Test SparkR
         run: |
           R -e "library(SparkR)"
