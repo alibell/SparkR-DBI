@@ -1,7 +1,6 @@
 #' Send a query to SparkR.
 #'
 #' @export
-#' @examples
 setMethod("dbSendQuery", "SparkRConnection", function(conn, statement, ...) {
   # Executing query
   state <- env(start=1, end=-1, completed=FALSE, cleared=FALSE, df=NULL, statement=statement)

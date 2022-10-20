@@ -3,7 +3,7 @@
 #'
 #' @docType package
 #'
-#' @author Ali BELLAMINE \email{contact@alibellamine.e}
+#' @author Ali BELLAMINE \email{contact@alibellamine.me}
 #'
 #' @name SparkRDBI
 NULL

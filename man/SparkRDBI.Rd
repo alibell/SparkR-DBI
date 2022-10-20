@@ -5,5 +5,5 @@
 \alias{SparkRDBI}
 \title{SparkR DBI}
 \author{
-Ali BELLAMINE \email{contact@alibellamine.e}
+Ali BELLAMINE \email{contact@alibellamine.me}
 }
