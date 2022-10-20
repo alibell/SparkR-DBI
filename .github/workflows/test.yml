@@ -25,10 +25,6 @@ jobs:
         with:
           r-version: 'release'
           use-public-rspm: true
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: |
-            any::devtools
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
@@ -39,3 +35,7 @@ jobs:
         with:
           spark-version: ${{ matrix.config.spark }}
           hadoop-version: ${{ matrix.config.hadoop }}
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::devtools
