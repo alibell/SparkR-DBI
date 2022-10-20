@@ -1,7 +1,9 @@
 # Generating a SparkContext
-library(DBI)
-sc <- SparkR::sparkR.session(
-    master = "local", 
-    sparkConfig = list(spark.driver.memory = "2g")
-)
-conn <- createSparkConnection(sc)
+load_context <- function() {
+    sc <- SparkR::sparkR.session(
+        master = "local", 
+        sparkConfig = list(spark.driver.memory = "2g")
+    )
+    
+    return (sc)
+}
