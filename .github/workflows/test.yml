@@ -46,4 +46,8 @@ jobs:
           extra-packages: |
             any::devtools
             SparkR=?ignore
-      - uses: r-lib/actions/check-r-package@v2
+      - name: Running test
+        run: |
+          devtools::load_all()
+          devtools::test()
+        shell: Rscript {0}
