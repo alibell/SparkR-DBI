@@ -1,5 +1,5 @@
 # Generating a SparkContext
-sc <- sparkR.session(
+sc <- SparkR::sparkR.session(
     master = "local", 
     sparkConfig = list(spark.driver.memory = "2g")
 )
