@@ -6,6 +6,6 @@ df <- data.frame(a = 1:3, b = c("a", "b", "c"))
 sdf <- SparkR::as.DataFrame(df)
 SparkR::saveAsTable(sdf, "testTable")
 
-# dbSendQuery
+# dbSendQuery should produce a SparkResult object
 res <- dbSendQuery(conn, "SELECT * FROM testTable")
-print(class(res))
+expect_identical(class(res), "SparkResult")
