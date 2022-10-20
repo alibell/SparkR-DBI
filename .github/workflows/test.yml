@@ -30,7 +30,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
-            any:devtools
+            any::devtools
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
