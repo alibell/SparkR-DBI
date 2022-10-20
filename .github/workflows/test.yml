@@ -37,6 +37,9 @@ jobs:
           hadoop-version: ${{ matrix.config.hadoop }}
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          cache: true
+          need: true
+          pak-version: devel
           extra-packages: |
             any::devtools
             SparkR=?ignore
