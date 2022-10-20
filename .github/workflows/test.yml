@@ -39,4 +39,4 @@ jobs:
         with:
           extra-packages: |
             any::devtools
-          dependencies: "hard"
+            SparkR?ignore
