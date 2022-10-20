@@ -1,4 +1,3 @@
-#' @import DBI
 #' SparkR connection class.
 #'
 #' @export
