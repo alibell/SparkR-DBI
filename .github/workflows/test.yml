@@ -30,7 +30,7 @@ jobs:
           python-version: '3.8'
       - uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: '8'
       - uses: vemonet/setup-spark@v1
         with:
           spark-version: ${{ matrix.config.spark }}
