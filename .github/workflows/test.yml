@@ -40,5 +40,6 @@ jobs:
           extra-packages: |
             any::devtools
             SparkR=?ignore
-      - run: |
-        R -e "library('SparkR')"
+      - name: Test SparkR
+        run: |
+          R -e "library('SparkR')"
