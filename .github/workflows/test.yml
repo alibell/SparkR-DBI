@@ -37,7 +37,7 @@ jobs:
           hadoop-version: ${{ matrix.config.hadoop }}
       - name: Searching for SparkR
         run: |
-          ls $SPARK_HOME/R
+          ls $SPARK_HOME/R/lib
       - name: Installating SparkR
         run: |
           R CMD INSTALL $SPARK_HOME/R/lib
