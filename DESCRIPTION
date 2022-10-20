@@ -10,9 +10,9 @@ Encoding: UTF-8
 Imports:
     DBI (>= 0.3.0),
     methods,
-    SparkR,
     rlang
 Suggests:
     DBItest, 
+    SparkR,
     testthat
 RoxygenNote: 7.2.0
