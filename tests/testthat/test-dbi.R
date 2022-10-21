@@ -12,9 +12,9 @@ test_that("dbColumnInfo produce the list and type of the columns", {
     res <- dbSendQuery(conn, "SELECT * FROM testTable")
     info <- dbColumnInfo(res)
 
-    expect_equal(info$name, colnames(df))
-    expect_equal(info$type, c("integer", "character"))
-    expect_equal(info$sql.type, c("int", "string"))
+    expect_equal(as.character(info$name), colnames(df))
+    expect_equal(as.character(info$type), c("integer", "character"))
+    expect_equal(as.character(info$sql.type), c("int", "string"))
 })
 
 test_that("dbGetStatement return the content of the statement", {
