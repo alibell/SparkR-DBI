@@ -12,5 +12,5 @@ setMethod("dbColumnInfo", "SparkRResult", function(res, ...) {
         class
     ))
 
-    data.frame(name=columns, type=columns_type, sql.type=columns_sql_type,stringsAsFactors = FALSE)
+    data.frame(name=columns, type=columns_type, sql.type=columns_sql_type, stringsAsFactors = FALSE)
 })

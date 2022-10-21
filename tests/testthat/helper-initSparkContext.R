@@ -6,7 +6,7 @@ load_context <- function() {
 }
 
 generate_fake_df <- function () {
-    return(data.frame(a = 1:3, b = c("a", "b", "c")))
+    return(data.frame(a = 1:3, b = c("a", "b", "c"), stringsAsFactors = FALSE))
 }
 
 # Generate DF
