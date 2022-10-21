@@ -16,6 +16,6 @@ test_that("dbColumnInfo produce the list and type of the columns", {
     info <- dbColumnInfo(res)
 
     expect_equal(info$name, colnames(df))
-    expect_equal(info$type, c("numeric", "character"))
-    expect_equal(info$sql.type, c("integer", "string"))
+    expect_equal(info$type, c("integer", "character"))
+    expect_equal(info$sql.type, c("int", "string"))
 })
