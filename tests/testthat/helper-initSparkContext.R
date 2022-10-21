@@ -12,10 +12,10 @@ generate_fake_df <- function () {
 # Generate DF
 generate_fake_sdf <- function() {
     load_context()
-    
+
     if (!("testDF" %in% SparkR::tableNames())) {
         df <- generate_fake_df()
         sdf <- SparkR::as.DataFrame(df)
-        SparkR::saveAsTable(sdf, "testTable")
+        SparkR::saveAsTable(sdf, "testTable", mode="overwrite")
     }
 }
