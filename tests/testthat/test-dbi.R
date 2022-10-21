@@ -141,30 +141,30 @@ test_that("dbWriteTable correctly write, overwrite and append table", {
 test_that("dbWriteTable row.names parameter create the dedicated column", {
     df <- generate_fake_df()
 
-    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names=TRUE)
-    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    dbWriteTable(conn, name="temp_table_dbWrite_rowNames", value=df, overwrite=TRUE, row_names=TRUE)
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite_rowNames")
     expect_equal(
         new_df$row_names,
         rownames(df)
     )
 
     # --- If row.names if NA and row names is 1:nrow(), the column shouldn't be created
-    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names=NA)
-    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    dbWriteTable(conn, name="temp_table_dbWrite_rowNames", value=df, overwrite=TRUE, row_names=NA)
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite_rowNames")
     expect_false("row_names" %in% colnames(new_df))
 
     # --- If row.names if NA and row names is not 1:nrow(), the column should be created
     colnames(df) <- c("a", "b", "c")
-    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names=NA)
-    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    dbWriteTable(conn, name="temp_table_dbWrite_rowNames", value=df, overwrite=TRUE, row_names=NA)
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite_rowNames")
     expect_equal(
         new_df$row_names,
         rownames(df)
     )
 
     # --- If row.names if of type character, the row_names columns should be named as that
-    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names="test_row_name")
-    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    dbWriteTable(conn, name="temp_table_dbWrite_rowNames", value=df, overwrite=TRUE, row_names="test_row_name")
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite_rowNames")
     expect_equal(
         new_df$test_row_name,
         rownames(df)
