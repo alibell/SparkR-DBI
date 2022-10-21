@@ -46,6 +46,8 @@ jobs:
           extra-packages: |
             any::devtools
             SparkR=?ignore
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Running test
         run: |
           devtools::load_all()
