@@ -179,4 +179,4 @@ test_that("dbWriteTable field.types should force casting", {
         dbColumnInfo(dbSendQuery("SELECT * FROM temp_table_dbWrite_field_type"))$sql.type,
         c("string", "string")
     )
-}
+})
