@@ -19,3 +19,6 @@ generate_fake_sdf <- function() {
         SparkR::saveAsTable(sdf, "testTable", mode="overwrite")
     }
 }
+
+sc <- load_context()
+conn <- createSparkRConnection(sc)

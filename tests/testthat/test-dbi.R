@@ -1,6 +1,3 @@
-sc <- load_context()
-conn <- createSparkRConnection(sc)
-
 test_that("dbSendQuery produce a SparkResult object", {
     generate_fake_sdf()
     res <- dbSendQuery(conn, "SELECT * FROM testTable")
@@ -9,6 +6,8 @@ test_that("dbSendQuery produce a SparkResult object", {
 
 test_that("dbColumnInfo produce the list and type of the columns", {
     generate_fake_sdf()
+    df <- generate_fake_df()
+
     res <- dbSendQuery(conn, "SELECT * FROM testTable")
     info <- dbColumnInfo(res)
 
@@ -63,8 +62,8 @@ test_that("dbClearResult clean the content of a SparkRResult object", {
     output_df <- dbFetch(res, n=-1)
     dbClearResult(res)
 
-    except_null(res@state[["df"]])
-    except_true(res@state[["cleared"]])
+    expect_null(res@state[["df"]])
+    expect_true(res@state[["cleared"]])
 })
 
 test_that("dbBind fill a parametrised query", {
@@ -73,7 +72,7 @@ test_that("dbBind fill a parametrised query", {
     dbBind(res, a=1)
     output_df <- dbFetch(res)
 
-    expect_equal(nrow(output_df), 1)
+    expect_equal(length(unique(output_df$a)), 1)
 })
 
 test_that("dbDataType provide informations about data types", {
