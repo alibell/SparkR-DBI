@@ -171,12 +171,12 @@ test_that("dbWriteTable row.names parameter create the dedicated column", {
     )
 })
 
-test_that("dbWriteTable field.types should force casting", {
-    df <- generate_fake_df()
+# test_that("dbWriteTable field.types should force casting", {
+#     df <- generate_fake_df()
 
-    dbWriteTable(conn, name="temp_table_dbWrite_field_type", value=df, overwrite=TRUE, row.names=FALSE, field.types=c("string", "string"))
-    expect_equal(
-        dbColumnInfo(dbSendQuery("SELECT * FROM temp_table_dbWrite_field_type"))$sql.type,
-        c("string", "string")
-    )
-})
+#     dbWriteTable(conn, name="temp_table_dbWrite_field_type", value=df, overwrite=TRUE, row.names=FALSE, field.types=c("string", "string"))
+#     expect_equal(
+#         dbColumnInfo(dbSendQuery("SELECT * FROM temp_table_dbWrite_field_type"))$sql.type,
+#         c("string", "string")
+#     )
+# })
