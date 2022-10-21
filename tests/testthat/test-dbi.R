@@ -75,3 +75,15 @@ test_that("dbBind fill find a parametrised query", {
 
     expect_equal(nrow(output_df), 1)
 })
+
+test_that("dbDataType provide informations about data types", {
+    input_df <- generate_fake_df()
+    expect_equal(dbDataType(conn, "test"), "STRING")
+    expect_equal(dbDataType(conn, 5.0), "DOUBLE")
+    expect_equal(dbDataType(conn, as.integer(5)), "INT")
+    expect_equal(dbDataType(conn, Sys.Date()), "DATE")
+    expect_equal(dbDataType(conn, as.POSIXct.Date(Sys.Date())), "TIMESTAMP")
+    expect_equal(dbDataType(conn, TRUE), "BOOLEAN")
+    expect_equal(dbDataType(conn, dbDataType(conn, raw(5))), "BINARY")
+    expect_equal(dbDataType(conn, input_df), c("INT", "STRING"))
+})

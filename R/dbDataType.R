@@ -1,6 +1,6 @@
 #' Find the database data type associated with an R object
 #' @export
-setMethod("dbDataType", signature(dbObj="SparkRConnection", obj="character"), function(dbObj, obj, ...) {
+setMethod("dbDataType", signature(dbObj="SparkRConnection"), function(dbObj, obj, ...) {
   if (is.data.frame(obj)) {
     df <- obj
   } else {
