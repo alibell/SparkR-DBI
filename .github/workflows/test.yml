@@ -48,9 +48,9 @@ jobs:
           R CMD INSTALL $SPARK_HOME/R/lib/SparkR
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
-        if: ${{ github.config.spark == '2.4.2' }}
+        if: ${{ github.config.spark == '2.4.0' }}
       - name: Running test
         run: |
           devtools::load_all()
-          devtools::test(reporter=c("success", "fail"))
+          devtools::test(reporter=c("progress", "fail"))
         shell: Rscript {0}
