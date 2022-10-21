@@ -35,9 +35,6 @@ jobs:
         with:
           spark-version: ${{ matrix.config.spark }}
           hadoop-version: ${{ matrix.config.hadoop }}
-      - name: Installating SparkR
-        run: |
-          R CMD INSTALL $SPARK_HOME/R/lib/SparkR
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache: true
@@ -46,6 +43,9 @@ jobs:
           extra-packages: |
             any::devtools
             SparkR=?ignore
+      - name: Installating SparkR
+        run: |
+          R CMD INSTALL $SPARK_HOME/R/lib/SparkR
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       - name: Running test
