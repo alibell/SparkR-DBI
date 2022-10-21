@@ -84,3 +84,99 @@ test_that("dbDataType provide informations about data types", {
     expect_equal(dbDataType(conn, TRUE), "BOOLEAN")
     expect_equal(dbDataType(conn, raw(5)), "BINARY")
 })
+
+test_that("dbExistsTable return TRUE when a table exists and FALSE otherwise", {
+    generate_fake_sdf()
+    expect_true(dbExistsTable(conn, "testTable"))
+    expect_false(dbExistsTable(conn, "toto"))
+})
+
+test_that("dbListFields return the list of fields of a table", {
+    expect_equal(dbListFields(conn, "testTable"), c("a", "b"))
+})
+
+test_that("dbListTables return the list of tables", {
+    generate_fake_sdf()
+    expect_true("testTable" %in% dbListTables(conn))
+})
+
+test_that("dbQuoteIdentifier correctly quotes the query parameters", {
+    expect_equal(dbQuoteIdentifier(conn, "a"), "`a`")
+    expect_equal(dbQuoteIdentifier(conn, "a.b"), "`a`.`b`")
+    expect_equal(dbQuoteIdentifier(conn, "`a`.b"), "`a`.`b`")
+    expect_equal(dbQuoteIdentifier(conn, "`a.b`"), "`a`.`b`")
+})
+
+test_that("dbRemoveTable correctly remove the table", {
+    df <- generate_fake_df()
+    dbWriteTable(conn, name="temp_table", value=df, overwrite=TRUE)
+    existsBefore <- dbExistsTable("temp_table")
+    dbRemoveTable(conn, "temp_table")
+    existsAfter <- dbExistsTable("temp_table")
+
+    expect_true(existsBefore && !existsAfter)
+})
+
+test_that("dbWriteTable correctly write, overwrite and append table", {
+    df <- generate_fake_df()
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=FALSE, append=FALSE)
+    expect_equal(
+        dbGetRowCount(dbSendQuery("SELECT * FROM temp_table_dbWrite")), 
+        nrow(df)
+    )
+    
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, append=FALSE)
+    expect_equal(
+        dbGetRowCount(dbSendQuery("SELECT * FROM temp_table_dbWrite")), 
+        nrow(df)
+    )
+
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=FALSE, append=TRUE)
+    expect_equal(
+        dbGetRowCount(dbSendQuery("SELECT * FROM temp_table_dbWrite")), 
+        2*nrow(df)
+    )
+})
+
+test_that("dbWriteTable row.names parameter create the dedicated column", {
+    df <- generate_fake_df()
+
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names=TRUE)
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    expect_equal(
+        new_df$row_names,
+        rownames(df)
+    )
+
+    # --- If row.names if NA and row names is 1:nrow(), the column shouldn't be created
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names=NA)
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    expect_false("row_names" %in% colnames(new_df))
+
+    # --- If row.names if NA and row names is not 1:nrow(), the column should be created
+    colnames(df) <- c("a", "b", "c")
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names=NA)
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    expect_equal(
+        new_df$row_names,
+        rownames(df)
+    )
+
+    # --- If row.names if of type character, the row_names columns should be named as that
+    dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, row_names="test_row_name")
+    new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite")
+    expect_equal(
+        new_df$test_row_name,
+        rownames(df)
+    )
+})
+
+test_that("dbWriteTable field.types should force casting", {
+    df <- generate_fake_df()
+
+    dbWriteTable(conn, name="temp_table_dbWrite_field_type", value=df, overwrite=TRUE, row.names=FALSE, field.types=c("string", "string"))
+    expect_equal(
+        dbColumnInfo(dbSendQuery("SELECT * FROM temp_table_dbWrite_field_type"))$sql.type,
+        c("string", "string")
+    )
+}
