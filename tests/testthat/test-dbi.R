@@ -66,3 +66,12 @@ test_that("dbClearResult clean the content of a SparkRResult object", {
     except_null(res@state[["df"]])
     except_true(res@state[["cleared"]])
 })
+
+test_that("dbBind fill find a parametrised query", {
+    generate_fake_sdf()
+    res <- dbSendQuery(conn, "SELECT * FROM testTable WHERE a = ?a")
+    dbBind(res, a=1)
+    output_df <- dbFetch(res)
+
+    expect_equal(nrow(output_df), 1)
+})
