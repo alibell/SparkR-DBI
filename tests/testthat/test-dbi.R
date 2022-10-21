@@ -92,6 +92,7 @@ test_that("dbExistsTable return TRUE when a table exists and FALSE otherwise", {
 })
 
 test_that("dbListFields return the list of fields of a table", {
+    generate_fake_sdf()
     expect_equal(dbListFields(conn, "testTable"), c("a", "b"))
 })
 
