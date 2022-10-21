@@ -8,7 +8,9 @@ setMethod("dbFetch", "SparkRResult", function(res, n=-1, ...) {
     stop("Result cleared")
   }
     
-  sdf <- SparkR::sql(res@state$statement)
+  sdf <- SparkR::sql(as.character(
+    res@state$statement
+  ))
 
   if (n == 0) {
     return(SparkR::collect(
