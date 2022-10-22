@@ -110,10 +110,10 @@ test_that("dbQuoteIdentifier correctly quotes the query parameters", {
 
 test_that("dbRemoveTable correctly remove the table", {
     df <- generate_fake_df()
-    dbWriteTable(conn, name="temp_table", value=df, overwrite=TRUE)
-    existsBefore <- dbExistsTable("temp_table")
-    dbRemoveTable(conn, "temp_table")
-    existsAfter <- dbExistsTable("temp_table")
+    dbWriteTable(conn, name="temp_table_remove", value=df, overwrite=TRUE)
+    existsBefore <- dbExistsTable(conn, "temp_table_remove")
+    dbRemoveTable(conn, "temp_table_remove")
+    existsAfter <- dbExistsTable(conn, "temp_table_remove")
 
     expect_true(existsBefore && !existsAfter)
 })
@@ -121,21 +121,21 @@ test_that("dbRemoveTable correctly remove the table", {
 test_that("dbWriteTable correctly write, overwrite and append table", {
     df <- generate_fake_df()
     dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=FALSE, append=FALSE)
-    res <- dbSendQuery("SELECT * FROM temp_table_dbWrite")
+    res <- dbSendQuery(conn, "SELECT * FROM temp_table_dbWrite")
     expect_equal(
         dbGetRowCount(res), 
         nrow(df)
     )
     
     dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, append=FALSE)
-    res <- dbSendQuery("SELECT * FROM temp_table_dbWrite")
+    res <- dbSendQuery(conn, "SELECT * FROM temp_table_dbWrite")
     expect_equal(
         dbGetRowCount(res), 
         nrow(df)
     )
 
     dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=FALSE, append=TRUE)
-    res <- dbSendQuery("SELECT * FROM temp_table_dbWrite")
+    res <- dbSendQuery(conn, "SELECT * FROM temp_table_dbWrite")
     expect_equal(
         dbGetRowCount(res), 
         2*nrow(df)
