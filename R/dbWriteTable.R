@@ -9,7 +9,7 @@ setMethod("dbWriteTable", "SparkRConnection", function(conn, name, value, append
         hasRowName <- TRUE
         rowName <- "row_names"
   } else if (is.na(row.names)) {
-    if (rownames(df) != 1:nrow(df)) {
+    if (!identical(as.character(rownames(df)), as.character(1:nrow(df)))) {
         hasRowName <- TRUE
         rowName <- "row_names"
     }
