@@ -5,19 +5,17 @@ setMethod("dbWriteTable", "SparkRConnection", function(conn, name, value, append
   rowName <- NULL
 
   # Processing row.names arguments
-  if (!is.na(row.names) && !is.null(row.names)) {
-    if (row.names == TRUE) {
+  if (!is.na(row.names) && !is.null(row.names) && row.names == TRUE) {
         hasRowName <- TRUE
         rowName <- "row_names"
-    } else if (is.na(row.names)) {
-        if (!identical(rownames(df), 1:nrow(df))) {
-            hasRowName <- TRUE
-            rowName <- "row_names"
-        }
-    } else if (is.character(row.names)) {
+  } else if (is.na(row.names)) {
+    if (!identical(rownames(df), 1:nrow(df))) {
         hasRowName <- TRUE
-        rowName <- row.names
+        rowName <- "row_names"
     }
+  } else if (is.character(row.names)) {
+      hasRowName <- TRUE
+      rowName <- row.names
   }
 
   if (hasRowName) {
