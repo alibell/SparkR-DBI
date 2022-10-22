@@ -9,7 +9,7 @@ setMethod("dbExistsTable", signature(conn="SparkRConnection"), function(conn, na
         database <- NULL
     }
 
-    exists <- table %in% dbListTables(conn, database=database)
+    exists <- tolower(table) %in% dbListTables(conn, database=database)
 
     exists
 })

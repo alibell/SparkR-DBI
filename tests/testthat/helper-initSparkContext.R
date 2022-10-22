@@ -16,7 +16,7 @@ generate_fake_sdf <- function() {
     if (!("testDF" %in% SparkR::tableNames())) {
         df <- generate_fake_df()
         sdf <- SparkR::as.DataFrame(df)
-        SparkR::saveAsTable(sdf, "testTable", mode="overwrite")
+        SparkR::saveAsTable(sdf, "test_table", mode="overwrite")
     }
 }
 

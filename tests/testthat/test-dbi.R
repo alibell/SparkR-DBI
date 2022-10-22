@@ -1,6 +1,6 @@
 test_that("dbSendQuery produce a SparkResult object", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
     expect_s4_class(res, "SparkRResult")
 })
 
@@ -8,7 +8,7 @@ test_that("dbColumnInfo produce the list and type of the columns", {
     generate_fake_sdf()
     df <- generate_fake_df()
 
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
     info <- dbColumnInfo(res)
 
     expect_equal(info$name, colnames(df))
@@ -17,7 +17,7 @@ test_that("dbColumnInfo produce the list and type of the columns", {
 })
 
 test_that("dbGetStatement return the content of the statement", {
-    statement <- "SELECT * FROM testTable"
+    statement <- "SELECT * FROM test_table"
     res <- dbSendQuery(conn, statement)
 
     expect_equal(dbGetStatement(res), statement)
@@ -25,14 +25,14 @@ test_that("dbGetStatement return the content of the statement", {
 
 test_that("dbGetRowCount return the right number of rows", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
 
     expect_equal(dbGetRowCount(res), 3)
 })
 
 test_that("dbFetch return the full dataset when n = -1", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
     output_df <- dbFetch(res, n=-1)
     input_df <- generate_fake_df()
 
@@ -41,7 +41,7 @@ test_that("dbFetch return the full dataset when n = -1", {
 
 test_that("dbFetch return a subpart of the dataset when n > 0", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
     input_df <- generate_fake_df()
 
     expect_equal(dbFetch(res, n=1), input_df[c(1),,drop=FALSE])
@@ -50,7 +50,7 @@ test_that("dbFetch return a subpart of the dataset when n > 0", {
 
 test_that("dbHasCompleted return TRUE when all rows are fetched", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
     output_df <- dbFetch(res, n=-1)
 
     expect_equal(dbHasCompleted(res), TRUE)
@@ -58,7 +58,7 @@ test_that("dbHasCompleted return TRUE when all rows are fetched", {
 
 test_that("dbClearResult clean the content of a SparkRResult object", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table")
     output_df <- dbFetch(res, n=-1)
     dbClearResult(res)
 
@@ -68,7 +68,7 @@ test_that("dbClearResult clean the content of a SparkRResult object", {
 
 test_that("dbBind fill a parametrised query", {
     generate_fake_sdf()
-    res <- dbSendQuery(conn, "SELECT * FROM testTable WHERE a = ?a")
+    res <- dbSendQuery(conn, "SELECT * FROM test_table WHERE a = ?a")
     dbBind(res, a=1)
     output_df <- dbFetch(res)
 
@@ -87,18 +87,18 @@ test_that("dbDataType provide informations about data types", {
 
 test_that("dbExistsTable return TRUE when a table exists and FALSE otherwise", {
     generate_fake_sdf()
-    expect_true(dbExistsTable(conn, "testTable"))
+    expect_true(dbExistsTable(conn, "test_table"))
     expect_false(dbExistsTable(conn, "toto"))
 })
 
 test_that("dbListFields return the list of fields of a table", {
     generate_fake_sdf()
-    expect_equal(dbListFields(conn, "testTable"), c("a", "b"))
+    expect_equal(dbListFields(conn, "test_table"), c("a", "b"))
 })
 
 test_that("dbListTables return the list of tables", {
     generate_fake_sdf()
-    expect_true("testTable" %in% dbListTables(conn))
+    expect_true("test_table" %in% dbListTables(conn))
 })
 
 test_that("dbQuoteIdentifier correctly quotes the query parameters", {
