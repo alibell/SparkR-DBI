@@ -121,20 +121,23 @@ test_that("dbRemoveTable correctly remove the table", {
 test_that("dbWriteTable correctly write, overwrite and append table", {
     df <- generate_fake_df()
     dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=FALSE, append=FALSE)
+    res <- dbSendQuery("SELECT * FROM temp_table_dbWrite")
     expect_equal(
-        dbGetRowCount(dbSendQuery("SELECT * FROM temp_table_dbWrite")), 
+        dbGetRowCount(res), 
         nrow(df)
     )
     
     dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=TRUE, append=FALSE)
+    res <- dbSendQuery("SELECT * FROM temp_table_dbWrite")
     expect_equal(
-        dbGetRowCount(dbSendQuery("SELECT * FROM temp_table_dbWrite")), 
+        dbGetRowCount(res), 
         nrow(df)
     )
 
     dbWriteTable(conn, name="temp_table_dbWrite", value=df, overwrite=FALSE, append=TRUE)
+    res <- dbSendQuery("SELECT * FROM temp_table_dbWrite")
     expect_equal(
-        dbGetRowCount(dbSendQuery("SELECT * FROM temp_table_dbWrite")), 
+        dbGetRowCount(res), 
         2*nrow(df)
     )
 })
