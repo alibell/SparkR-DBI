@@ -158,7 +158,7 @@ test_that("dbWriteTable row.names parameter create the dedicated column", {
     expect_false("row_names" %in% colnames(new_df))
 
     # --- If row.names if NA and row names is not 1:nrow(), the column should be created
-    colnames(df) <- c("a", "b", "c")
+    rownames(df) <- c("a", "b", "c")
     dbWriteTable(conn, name="temp_table_dbWrite_rowNames", value=df, overwrite=TRUE, row_names=NA)
     new_df <- dbGetQuery(conn, "SELECT * FROM temp_table_dbWrite_rowNames")
     expect_equal(
