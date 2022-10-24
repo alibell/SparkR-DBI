@@ -3,6 +3,7 @@
 #'
 #' @param sc Spark Context object
 #' @param ... Extra parameters
+#' @importFrom methods new
 #' @export
 #' @examples
 #' \dontrun{

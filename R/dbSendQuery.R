@@ -5,6 +5,7 @@
 #' @param statement SQL statement to send
 #' @param params List of parameters for parametrised query
 #' @param immediate This parameter is ignored in SparkR implementation
+#' @importFrom methods new
 #' @param ... Extra parameters
 #' @export
 #' @examples
