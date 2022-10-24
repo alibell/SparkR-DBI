@@ -1,5 +1,6 @@
 #' SparkR results class.
 #'
+#' @name SparkRResult
 #' @keywords internal
 #' @export
 setClass("SparkRResult",

@@ -1,4 +1,4 @@
-#' @export
+=#' @export
 #' @examples
 #' \dontrun{
 #' db <- createSparkRConnection(sc=sc)

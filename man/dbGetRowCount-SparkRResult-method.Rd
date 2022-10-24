@@ -2,10 +2,22 @@
 % Please edit documentation in R/dbGetRowCount.R
 \name{dbGetRowCount,SparkRResult-method}
 \alias{dbGetRowCount,SparkRResult-method}
-\title{Send a query to SparkR.}
+\title{dbGetRowCount DBI method
+Return the returned number of rows from a SparkRResult object.
+DBI documentation: https://dbi.r-dbi.org/reference/dbGetRowCount.html}
 \usage{
 \S4method{dbGetRowCount}{SparkRResult}(res, ...)
 }
 \description{
-Send a query to SparkR.
+dbGetRowCount DBI method
+Return the returned number of rows from a SparkRResult object.
+DBI documentation: https://dbi.r-dbi.org/reference/dbGetRowCount.html
+}
+\examples{
+\dontrun{
+db <- createSparkRConnection(sc=sc)
+dbWriteTable(db, "mtcars", mtcars)
+res <- dbGetQuery(db, "SELECT * FROM mtcars")
+dbGetRowCount(res)
+}
 }

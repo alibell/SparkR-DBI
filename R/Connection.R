@@ -1,5 +1,6 @@
 #' SparkR connection class.
 #'
+#' @name SparkRConnection
 #' @export
 #' @keywords internal
 setOldClass("jobj")

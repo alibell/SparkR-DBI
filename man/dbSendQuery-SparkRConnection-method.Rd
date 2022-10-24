@@ -2,10 +2,21 @@
 % Please edit documentation in R/dbSendQuery.R
 \name{dbSendQuery,SparkRConnection-method}
 \alias{dbSendQuery,SparkRConnection-method}
-\title{Send a query to SparkR.}
+\title{dbSendQuery DBI method
+Generate a SparkRResult object from a parametrised or not parametrised SQL query.
+DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html}
 \usage{
 \S4method{dbSendQuery}{SparkRConnection}(conn, statement, ...)
 }
 \description{
-Send a query to SparkR.
+dbSendQuery DBI method
+Generate a SparkRResult object from a parametrised or not parametrised SQL query.
+DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html
+}
+\examples{
+\dontrun{
+db <- createSparkRConnection(sc=sc)
+dbWriteTable(db, "mtcars", mtcars)
+res <- dbSendQuery(db, "SELECT * FROM mtcars")
+}
 }
