@@ -1,6 +1,6 @@
 Package: SparkRDBI
 Type: Package
-Title: BMI Package
+Title: SparkR DBI interface
 Version: 0.0.1
 Author: Ali BELLAMINE
 Maintainer: Ali BELLAMINE <contact@alibellamine.me>
