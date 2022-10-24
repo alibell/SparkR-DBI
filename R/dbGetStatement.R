@@ -1,6 +1,7 @@
 #' dbGetStatement DBI method
 #' Return the statement of a SparkRResult object.
-#' The returned statement is the providen one and not the statement generated after dbBind execution.
+#' The returned statement is the providen one and not
+#' the statement generated after dbBind execution.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbGetStatement.html
 #' @param res SparkRResult object
 #' @param ... Extra parameters

@@ -12,7 +12,9 @@
 #' dbWriteTable(db, "mtcars", mtcars)
 #' dbListTables(db)
 #' }
-setMethod("dbListTables", signature(conn="SparkRConnection"), function(conn, database=NULL, ...) {
+setMethod("dbListTables",
+        signature(conn = "SparkRConnection"),
+        function(conn, database = NULL, ...) {
     tables <- SparkR::tableNames(database)
     unlist(tables)
 })

@@ -10,6 +10,6 @@ setOldClass("jobj")
 setClass("SparkRConnection",
   contains = "DBIConnection",
   slots = list(
-    sc = 'jobj'
+    sc = "jobj"
   )
 )

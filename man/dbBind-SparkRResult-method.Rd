@@ -6,7 +6,7 @@
 Parametrised query is not officialy supported in Spark environment, it is here managed with the sqlInterpolate method
 DBI documentation: https://dbi.r-dbi.org/reference/dbBind.html}
 \usage{
-\S4method{dbBind}{SparkRResult}(res, params = list(), ...)
+\S4method{dbBind}{SparkRResult}(res, params = NULL, ...)
 }
 \arguments{
 \item{res}{SparkRResult object}
