@@ -1,11 +1,11 @@
 #' dbSendQuery DBI method
 #' Generate a SparkRResult object from a parametrised or not parametrised SQL query.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html
+#' @importFrom methods new
 #' @param conn SparkRConnection object
 #' @param statement SQL statement to send
 #' @param params List of parameters for parametrised query
 #' @param immediate This parameter is ignored in SparkR implementation
-#' @importFrom methods new
 #' @param ... Extra parameters
 #' @export
 #' @examples
@@ -25,6 +25,7 @@ setMethod("dbSendQuery", "SparkRConnection", function(conn, statement, params=NU
     
     statement <- do.call(sqlInterpolate, params)
   }
+
   if (!grepl("\\?[^ ]", statement)) {
     SparkR::sql(statement)
   } else {
