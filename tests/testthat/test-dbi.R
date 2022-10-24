@@ -4,6 +4,15 @@ test_that("dbSendQuery produce a SparkResult object", {
     expect_s4_class(res, "SparkRResult")
 })
 
+test_that("dbSendQuery execute parametrised query", {
+    df <- generate_fake_df()
+    dbWriteTable(conn, name="temp_table_dbsendquery", value=df, overwrite=TRUE)
+    
+    expect_true(dbExistsTable("temp_table_dbsendquery"))
+    res <- dbSendQuery(conn, "DROP TABLE ?table", params=list(table="temp_table_dbsendquery"))
+    expect_false(dbExistsTable("temp_table_dbsendquery"))
+})
+
 test_that("dbColumnInfo produce the list and type of the columns", {
     generate_fake_sdf()
     df <- generate_fake_df()
@@ -72,6 +81,12 @@ test_that("dbBind fill a parametrised query", {
     dbBind(res, a=1)
     output_df <- dbFetch(res)
 
+    expect_equal(length(unique(output_df$a)), 1)
+
+    res <- dbSendQuery(conn, "SELECT * FROM test_table WHERE a = ?a")
+    dbBind(res, params=list(a=1))
+    output_df <- dbFetch(res)
+    
     expect_equal(length(unique(output_df$a)), 1)
 })
 
