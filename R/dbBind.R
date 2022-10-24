@@ -3,6 +3,7 @@
 #' it is here managed with the sqlInterpolate method
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbBind.html
 #' @param res SparkRResult object
+#' @param params List of parameters values
 #' @param ... Extra parameters
 #' @export
 #' @examples
@@ -15,17 +16,8 @@
 #' }
 setMethod("dbBind",
           "SparkRResult",
-          function(res, ...) {
+          function(res, params, ...) {
   extra_parameters <- list(...)
-  if ("params" %in% names(extra_parameters)) {
-    params <- extra_parameters[["params"]]
-  } else {
-    params <- list()
-  }
-
-  if (is.null(params)) {
-    params <- list()
-  }
 
   for (i in seq_along(extra_parameters)) {
     param_name <- names(extra_parameters)[i]

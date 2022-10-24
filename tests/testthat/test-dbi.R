@@ -85,7 +85,7 @@ test_that("dbClearResult clean the content of a SparkRResult object", {
 test_that("dbBind fill a parametrised query", {
     generate_fake_sdf()
     res <- dbSendQuery(conn, "SELECT * FROM test_table WHERE a = ?a")
-    dbBind(res, a = 1)
+    dbBind(res, params = list(), a = 1)
     output_df <- dbFetch(res)
 
     expect_equal(length(unique(output_df$a)), 1)
