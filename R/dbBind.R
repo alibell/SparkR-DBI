@@ -12,7 +12,7 @@
 #' dbBind(res, cyl = 4)
 #' dbFetch(res)
 #' }
-setMethod("dbBind", "SparkRResult", function(res, params, ...) {
+setMethod("dbBind", "SparkRResult", function(res, params=list(), ...) {
   extra_parameters <- list(...)
   for (i in 1:length(extra_parameters)) {
     param_name <- names(extra_parameters)[i]
