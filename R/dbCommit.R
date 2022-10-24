@@ -1,4 +1,4 @@
 
-setMethod("dbCommit", "spark_connection", function(conn) {
+setMethod("dbCommit", "SparkRConnection", function(conn) {
   TRUE
 })

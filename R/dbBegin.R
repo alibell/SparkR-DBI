@@ -1,4 +1,4 @@
 
-setMethod("dbBegin", "spark_connection", function(conn) {
+setMethod("dbBegin", "SparkRConnection", function(conn) {
   TRUE
 })

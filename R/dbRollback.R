@@ -1,3 +1,3 @@
-setMethod("dbRollback", "spark_connection", function(conn) {
+setMethod("dbRollback", "SparkRConnection", function(conn) {
   TRUE
 })
