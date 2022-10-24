@@ -4,7 +4,8 @@
 \alias{dbDataType,SparkRConnection-method}
 \title{dbDataType DBI method
 Find the database data type related with an R object
-This is performed by creating a Spark DF from the R object and thus letting Spark automatically cast the object.
+This is performed by creating a Spark DF from the R object
+and thus letting Spark automatically cast the object.
 DBI documentation: https://dbi.r-dbi.org/reference/dbDataType.html}
 \usage{
 \S4method{dbDataType}{SparkRConnection}(dbObj, obj, ...)
@@ -19,7 +20,8 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbDataType.html}
 \description{
 dbDataType DBI method
 Find the database data type related with an R object
-This is performed by creating a Spark DF from the R object and thus letting Spark automatically cast the object.
+This is performed by creating a Spark DF from the R object
+and thus letting Spark automatically cast the object.
 DBI documentation: https://dbi.r-dbi.org/reference/dbDataType.html
 }
 \examples{

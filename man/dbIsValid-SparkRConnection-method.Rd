@@ -4,7 +4,8 @@
 \alias{dbIsValid,SparkRConnection-method}
 \title{dbIsValid DBI method
 Return the valid status of the SparkR connection.
-This method call the `isStopped` method of the sparkContext Scala API to get the connection status.
+This method call the `isStopped` method of the sparkContext
+Scala API to get the connection status.
 DBI documentation: https://dbi.r-dbi.org/reference/dbIsValid.html}
 \usage{
 \S4method{dbIsValid}{SparkRConnection}(dbObj, ...)
@@ -17,7 +18,8 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbIsValid.html}
 \description{
 dbIsValid DBI method
 Return the valid status of the SparkR connection.
-This method call the `isStopped` method of the sparkContext Scala API to get the connection status.
+This method call the `isStopped` method of the sparkContext
+Scala API to get the connection status.
 DBI documentation: https://dbi.r-dbi.org/reference/dbIsValid.html
 }
 \examples{

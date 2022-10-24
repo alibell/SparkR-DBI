@@ -4,7 +4,8 @@
 \alias{dbGetStatement,SparkRResult-method}
 \title{dbGetStatement DBI method
 Return the statement of a SparkRResult object.
-The returned statement is the providen one and not the statement generated after dbBind execution.
+The returned statement is the providen one and not
+the statement generated after dbBind execution.
 DBI documentation: https://dbi.r-dbi.org/reference/dbGetStatement.html}
 \usage{
 \S4method{dbGetStatement}{SparkRResult}(res, ...)
@@ -17,7 +18,8 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbGetStatement.html}
 \description{
 dbGetStatement DBI method
 Return the statement of a SparkRResult object.
-The returned statement is the providen one and not the statement generated after dbBind execution.
+The returned statement is the providen one and not
+the statement generated after dbBind execution.
 DBI documentation: https://dbi.r-dbi.org/reference/dbGetStatement.html
 }
 \examples{

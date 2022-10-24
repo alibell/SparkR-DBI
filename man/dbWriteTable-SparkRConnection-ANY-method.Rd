@@ -31,7 +31,10 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbWriteTable.html}
 
 \item{temporary}{If TRUE, the table if written as a temporary view}
 
-\item{row.names}{If TRUE, a column containing the row names if created, if NA it is created only if the row names are different from 1:nrow(), if it is a character the created column is named according to the row.names value}
+\item{row.names}{If TRUE, a column containing the row names if created,
+if NA it is created only if the row names are different
+from 1:nrow(), if it is a character the created column
+is named according to the row.names value}
 
 \item{field.types}{Vector containing the type to cast to the written column}
 

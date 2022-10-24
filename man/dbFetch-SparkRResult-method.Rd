@@ -4,7 +4,9 @@
 \alias{dbFetch,SparkRResult-method}
 \title{dbFetch DBI method
 Fetch results from a SparkRResult object.
-As Spark doesn't support cursor, we simulate this by fetching and keeping in memory the whole DataFrame during the first fetch and then deliver the requested subparts of that DataFrame.
+As Spark doesn't support cursor, we simulate this by fetching and keeping
+in memory the whole DataFrame during the first fetch and then deliver
+the requested subparts of that DataFrame.
 DBI documentation: https://dbi.r-dbi.org/reference/dbFetch.html}
 \usage{
 \S4method{dbFetch}{SparkRResult}(res, n = -1, ...)
@@ -19,7 +21,9 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbFetch.html}
 \description{
 dbFetch DBI method
 Fetch results from a SparkRResult object.
-As Spark doesn't support cursor, we simulate this by fetching and keeping in memory the whole DataFrame during the first fetch and then deliver the requested subparts of that DataFrame.
+As Spark doesn't support cursor, we simulate this by fetching and keeping
+in memory the whole DataFrame during the first fetch and then deliver
+the requested subparts of that DataFrame.
 DBI documentation: https://dbi.r-dbi.org/reference/dbFetch.html
 }
 \examples{

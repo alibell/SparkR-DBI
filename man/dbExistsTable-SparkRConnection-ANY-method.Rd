@@ -4,8 +4,11 @@
 \alias{dbExistsTable,SparkRConnection,ANY-method}
 \title{dbExistsTable DBI method
 Check for table existence
-If the table name if a simple string (example: abc), the table is searched inside the current used database.
-If the table name contains a dot (example: databaseName.abc), the table is searched inside the specified database, named databaseName in this example.
+If the table name if a simple string (example: abc),
+the table is searched inside the current used database.
+If the table name contains a dot (example: databaseName.abc),
+the table is searched inside the specified database,
+named databaseName in this example.
 DBI documentation: https://dbi.r-dbi.org/reference/dbExistsTable.html}
 \usage{
 \S4method{dbExistsTable}{SparkRConnection,ANY}(conn, name, ...)
@@ -20,8 +23,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbExistsTable.html}
 \description{
 dbExistsTable DBI method
 Check for table existence
-If the table name if a simple string (example: abc), the table is searched inside the current used database.
-If the table name contains a dot (example: databaseName.abc), the table is searched inside the specified database, named databaseName in this example.
+If the table name if a simple string (example: abc),
+the table is searched inside the current used database.
+If the table name contains a dot (example: databaseName.abc),
+the table is searched inside the specified database,
+named databaseName in this example.
 DBI documentation: https://dbi.r-dbi.org/reference/dbExistsTable.html
 }
 \examples{

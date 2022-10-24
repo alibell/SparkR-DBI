@@ -3,7 +3,8 @@
 \name{dbSendQuery,SparkRConnection-method}
 \alias{dbSendQuery,SparkRConnection-method}
 \title{dbSendQuery DBI method
-Generate a SparkRResult object from a parametrised or not parametrised SQL query.
+Generate a SparkRResult object from a parametrised
+or not parametrised SQL query.
 DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html}
 \usage{
 \S4method{dbSendQuery}{SparkRConnection}(conn, statement, params = NULL, immediate = NULL, ...)
@@ -21,7 +22,8 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html}
 }
 \description{
 dbSendQuery DBI method
-Generate a SparkRResult object from a parametrised or not parametrised SQL query.
+Generate a SparkRResult object from a parametrised
+or not parametrised SQL query.
 DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html
 }
 \examples{
