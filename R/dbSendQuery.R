@@ -25,10 +25,10 @@ setMethod("dbSendQuery", "SparkRConnection", function(conn, statement, params=NU
     statement <- do.call(sqlInterpolate, params)
   }
   if (!grepl("\\?[^ ]", statement)) {
-    sql(statement)
+    SparkR::sql(statement)
   } else {
     message("Parametrised query with missing parameters.")
   }
 
-  new("SparkRResult", statement=state$statement, state=state, ...)
+  new("SparkRResult", conn=conn, statement=state$statement, state=state, ...)
 })

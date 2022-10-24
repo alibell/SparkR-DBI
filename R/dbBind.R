@@ -12,6 +12,16 @@
 #' dbBind(res, cyl = 4)
 #' dbFetch(res)
 #' }
-setMethod("dbBind", "SparkRResult", function(res, ...) {
-  res@state$statement <- sqlInterpolate(conn, res@statement, ...)
+setMethod("dbBind", "SparkRResult", function(res, params, ...) {
+  extra_parameters <- list(...)
+  for (i in 1:length(extra_parameters)) {
+    param_name <- names(extra_parameters)[i]
+    if (!(param_name %in% names(params))) {
+      params[[param_name]] <- extra_parameters[[param_name]]
+    }
+  }
+
+  params[["conn"]] <- res@conn
+  params[["sql"]] <- res@statement
+  res@state$statement <- do.call(sqlInterpolate, params)
 })
