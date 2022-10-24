@@ -14,7 +14,9 @@
 #' dbBind(res, cyl = 4)
 #' dbFetch(res)
 #' }
-setMethod("dbBind", "SparkRResult", function(res, params = NULL, ...) {
+setMethod("dbBind",
+          "SparkRResult",
+          function(res, params = list(), ...) {
   extra_parameters <- list(...)
   if (is.null(params)) {
     params <- list()
@@ -30,4 +32,25 @@ setMethod("dbBind", "SparkRResult", function(res, params = NULL, ...) {
   params[["conn"]] <- res@conn
   params[["sql"]] <- res@statement
   res@state$statement <- do.call(sqlInterpolate, params)
+})
+
+#' dbBind DBI method
+#' Parametrised query is not officialy supported in Spark environment,
+#' it is here managed with the sqlInterpolate method
+#' DBI documentation: https://dbi.r-dbi.org/reference/dbBind.html
+#' @param res SparkRResult object
+#' @param ... Extra parameters
+#' @export
+#' @examples
+#' \dontrun{
+#' db <- createSparkRConnection(sc=sc)
+#' dbWriteTable(db, "mtcars", mtcars)
+#' res <- dbGetQuery(db, "SELECT * FROM mtcars WHERE cyl == ?cyl")
+#' dbBind(res, cyl = 4)
+#' dbFetch(res)
+#' }
+setMethod("dbBind",
+          "SparkRResult",
+          function(res, ...) {
+    dbBind(res, params=list(), ...)
 })
