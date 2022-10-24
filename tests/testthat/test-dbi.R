@@ -4,7 +4,7 @@ test_that("dbSendQuery produce a SparkResult object", {
     expect_s4_class(res, "SparkRResult")
 })
 
-test_that("dbSendQuery execute parametrised query", {
+test_that("dbSendQuery execute query", {
     df <- generate_fake_df()
     dbWriteTable(
         conn,
@@ -15,8 +15,7 @@ test_that("dbSendQuery execute parametrised query", {
     expect_true(dbExistsTable(conn, "temp_table_dbsendquery"))
     res <- dbSendQuery(
         conn,
-        "DROP TABLE ?table",
-        params = list(table = "temp_table_dbsendquery")
+        "DROP TABLE temp_table_dbsendquery"
     )
     expect_false(dbExistsTable(conn, "temp_table_dbsendquery"))
 })
