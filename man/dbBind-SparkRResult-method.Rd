@@ -12,6 +12,8 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbBind.html}
 \arguments{
 \item{res}{SparkRResult object}
 
+\item{params}{List of parameters values}
+
 \item{...}{Extra parameters}
 }
 \description{
