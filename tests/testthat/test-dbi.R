@@ -8,9 +8,9 @@ test_that("dbSendQuery execute parametrised query", {
     df <- generate_fake_df()
     dbWriteTable(conn, name="temp_table_dbsendquery", value=df, overwrite=TRUE)
     
-    expect_true(dbExistsTable("temp_table_dbsendquery"))
+    expect_true(dbExistsTable(conn, "temp_table_dbsendquery"))
     res <- dbSendQuery(conn, "DROP TABLE ?table", params=list(table="temp_table_dbsendquery"))
-    expect_false(dbExistsTable("temp_table_dbsendquery"))
+    expect_false(dbExistsTable(conn, "temp_table_dbsendquery"))
 })
 
 test_that("dbColumnInfo produce the list and type of the columns", {
