@@ -8,6 +8,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbHasCompleted.html}
 \usage{
 \S4method{dbHasCompleted}{SparkRResult}(res, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbHasCompleted DBI method
 Return the completion status of a SparkRResult object.

@@ -1,6 +1,9 @@
 #' dbListFields DBI method
 #' Return the columns name according to a table name (example: abc, databaseName.tableName, ...).
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbListFields.html
+#' @param conn SparkRConnection object
+#' @param name Table name
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

@@ -1,6 +1,8 @@
 #' dbGetRowCount DBI method
 #' Return the returned number of rows from a SparkRResult object.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbGetRowCount.html
+#' @param res SparkRResult object
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

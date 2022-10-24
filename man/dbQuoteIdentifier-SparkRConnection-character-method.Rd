@@ -8,6 +8,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbQuoteIdentifier.html}
 \usage{
 \S4method{dbQuoteIdentifier}{SparkRConnection,character}(conn, x)
 }
+\arguments{
+\item{conn}{SparkRConnection object}
+
+\item{x}{String to encapsulate with quotes}
+}
 \description{
 dbQuoteIdentifier DBI method
 Generate quote to prevent SQL injection.

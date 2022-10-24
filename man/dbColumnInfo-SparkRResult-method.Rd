@@ -9,6 +9,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbColumnInfo.html}
 \usage{
 \S4method{dbColumnInfo}{SparkRResult}(res, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbColumnInfo DBI method
 Describe columns name, type and sql.type from a SparkRResult object

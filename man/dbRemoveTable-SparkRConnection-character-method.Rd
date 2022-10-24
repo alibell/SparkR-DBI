@@ -8,6 +8,17 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbRemoveTable.html}
 \usage{
 \S4method{dbRemoveTable}{SparkRConnection,character}(conn, name, temporary = FALSE, fail_if_missing = TRUE, ...)
 }
+\arguments{
+\item{conn}{SparkRConnection object}
+
+\item{name}{Table to remove}
+
+\item{temporary}{If TRUE the table is removed only it is a temporary table}
+
+\item{fail_if_missing}{If TRUE the table an error is raised if the table if missing}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbRemoveTable DBI method
 Remove a table according to its name.

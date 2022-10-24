@@ -8,6 +8,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbBind.html}
 \usage{
 \S4method{dbBind}{SparkRResult}(res, params, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbBind DBI method
 Parametrised query is not officialy supported in Spark environment, it is here managed with the sqlInterpolate method

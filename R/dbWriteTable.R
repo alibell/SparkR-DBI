@@ -1,6 +1,15 @@
 #' dbWriteTable DBI method
 #' Write a table from a R dataframe.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbWriteTable.html
+#' @param conn SparkRConnection object
+#' @param name Name of the output table
+#' @param value R data.frame to write
+#' @param append If TRUE the table is appened to existing one
+#' @param overwrite If TRUE, the existing table is overwritten
+#' @param temporary If TRUE, the table if written as a temporary view
+#' @param row.names If TRUE, a column containing the row names if created, if NA it is created only if the row names are different from 1:nrow(), if it is a character the created column is named according to the row.names value
+#' @param field.types Vector containing the type to cast to the written column
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

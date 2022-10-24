@@ -9,6 +9,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbGetStatement.html}
 \usage{
 \S4method{dbGetStatement}{SparkRResult}(res, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbGetStatement DBI method
 Return the statement of a SparkRResult object.

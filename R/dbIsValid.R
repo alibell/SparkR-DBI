@@ -2,6 +2,8 @@
 #' Return the valid status of the SparkR connection.
 #' This method call the `isStopped` method of the sparkContext Scala API to get the connection status.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbIsValid.html
+#' @param dbObj SparkRConnection object
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

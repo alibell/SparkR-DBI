@@ -9,6 +9,9 @@ DBI documentation: https://dbi.r-dbi.org/reference/transactions.html}
 \usage{
 \S4method{dbBegin}{SparkRConnection}(conn)
 }
+\arguments{
+\item{conn}{SparkRConnection object}
+}
 \description{
 dbBegin DBI method
 Not supported in Spark environment

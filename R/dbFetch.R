@@ -2,6 +2,9 @@
 #' Fetch results from a SparkRResult object.
 #' As Spark doesn't support cursor, we simulate this by fetching and keeping in memory the whole DataFrame during the first fetch and then deliver the requested subparts of that DataFrame.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbFetch.html
+#' @param res SparkRResult object
+#' @param n Number of rows to fetch, if n=-1 all the rows are fetched
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

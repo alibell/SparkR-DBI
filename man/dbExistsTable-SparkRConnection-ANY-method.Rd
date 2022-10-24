@@ -10,6 +10,13 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbExistsTable.html}
 \usage{
 \S4method{dbExistsTable}{SparkRConnection,ANY}(conn, name, ...)
 }
+\arguments{
+\item{conn}{SparkRConnection object}
+
+\item{name}{Database name}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbExistsTable DBI method
 Check for table existence

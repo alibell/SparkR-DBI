@@ -1,8 +1,9 @@
 #' @import DBI
 setOldClass("jobj")
 
-#' SparkR connection class.
+#' SparkR connection class
 #'
+#' @slot sc Spark Context object
 #' @name SparkRConnection
 #' @keywords internal
 #' @export

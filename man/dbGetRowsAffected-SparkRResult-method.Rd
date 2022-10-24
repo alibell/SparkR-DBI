@@ -9,6 +9,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbGetRowsAffected.html}
 \usage{
 \S4method{dbGetRowsAffected}{SparkRResult}(res, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbGetRowsAffected DBI method
 This functionnality is not supported by Spark.

@@ -9,6 +9,13 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbDataType.html}
 \usage{
 \S4method{dbDataType}{SparkRConnection}(dbObj, obj, ...)
 }
+\arguments{
+\item{dbObj}{SparkRConnection object}
+
+\item{obj}{R object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbDataType DBI method
 Find the database data type related with an R object

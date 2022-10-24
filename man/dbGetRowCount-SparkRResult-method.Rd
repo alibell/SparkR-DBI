@@ -8,6 +8,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbGetRowCount.html}
 \usage{
 \S4method{dbGetRowCount}{SparkRResult}(res, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbGetRowCount DBI method
 Return the returned number of rows from a SparkRResult object.

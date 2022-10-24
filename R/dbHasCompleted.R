@@ -1,6 +1,8 @@
 #' dbHasCompleted DBI method
 #' Return the completion status of a SparkRResult object.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbHasCompleted.html
+#' @param res SparkRResult object
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

@@ -1,3 +1,8 @@
+#' createSparkRConnection
+#' Return an instance of the SparkRConnection from a Spark Context object.
+#'
+#' @param sc Spark Context object
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

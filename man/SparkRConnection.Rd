@@ -3,8 +3,14 @@
 \docType{class}
 \name{SparkRConnection}
 \alias{SparkRConnection}
-\title{SparkR connection class.}
+\title{SparkR connection class}
 \description{
-SparkR connection class.
+SparkR connection class
 }
+\section{Slots}{
+
+\describe{
+\item{\code{sc}}{Spark Context object}
+}}
+
 \keyword{internal}

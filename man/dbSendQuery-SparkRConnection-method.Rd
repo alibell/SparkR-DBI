@@ -6,7 +6,18 @@
 Generate a SparkRResult object from a parametrised or not parametrised SQL query.
 DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html}
 \usage{
-\S4method{dbSendQuery}{SparkRConnection}(conn, statement, ...)
+\S4method{dbSendQuery}{SparkRConnection}(conn, statement, params = NULL, immediate = NULL, ...)
+}
+\arguments{
+\item{conn}{SparkRConnection object}
+
+\item{statement}{SQL statement to send}
+
+\item{params}{List of parameters for parametrised query}
+
+\item{immediate}{This parameter is ignored in SparkR implementation}
+
+\item{...}{Extra parameters}
 }
 \description{
 dbSendQuery DBI method

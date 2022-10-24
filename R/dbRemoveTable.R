@@ -1,6 +1,11 @@
 #' dbRemoveTable DBI method
 #' Remove a table according to its name.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbRemoveTable.html
+#' @param conn SparkRConnection object
+#' @param name Table to remove
+#' @param temporary If TRUE the table is removed only it is a temporary table
+#' @param fail_if_missing If TRUE the table an error is raised if the table if missing
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{

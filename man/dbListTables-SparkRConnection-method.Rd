@@ -9,6 +9,13 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbListTables.html}
 \usage{
 \S4method{dbListTables}{SparkRConnection}(conn, database = NULL, ...)
 }
+\arguments{
+\item{conn}{SparkRConnection object}
+
+\item{database}{Database name}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbListTables DBI method
 Return the tables name according to a database name.

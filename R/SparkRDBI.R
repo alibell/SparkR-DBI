@@ -1,5 +1,5 @@
 #' SparkR DBI
-#'
+#' DBI backend for SparkR library.
 #'
 #' @docType package
 #'

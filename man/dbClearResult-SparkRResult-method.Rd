@@ -8,6 +8,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbClearResult.html}
 \usage{
 \S4method{dbClearResult}{SparkRResult}(res, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbClearResult DBI method
 Release memory consumption of a SparkRResult object and prevent future Fetch

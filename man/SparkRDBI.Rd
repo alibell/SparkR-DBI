@@ -3,7 +3,8 @@
 \docType{package}
 \name{SparkRDBI}
 \alias{SparkRDBI}
-\title{SparkR DBI}
+\title{SparkR DBI
+DBI backend for SparkR library.}
 \author{
 Ali BELLAMINE \email{contact@alibellamine.me}
 }

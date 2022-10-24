@@ -9,6 +9,11 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbIsValid.html}
 \usage{
 \S4method{dbIsValid}{SparkRConnection}(dbObj, ...)
 }
+\arguments{
+\item{dbObj}{SparkRConnection object}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbIsValid DBI method
 Return the valid status of the SparkR connection.

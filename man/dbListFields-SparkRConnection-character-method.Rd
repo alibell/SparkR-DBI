@@ -8,6 +8,13 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbListFields.html}
 \usage{
 \S4method{dbListFields}{SparkRConnection,character}(conn, name, ...)
 }
+\arguments{
+\item{conn}{SparkRConnection object}
+
+\item{name}{Table name}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbListFields DBI method
 Return the columns name according to a table name (example: abc, databaseName.tableName, ...).

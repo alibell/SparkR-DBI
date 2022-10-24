@@ -1,6 +1,11 @@
 #' dbSendQuery DBI method
 #' Generate a SparkRResult object from a parametrised or not parametrised SQL query.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbSendQuery.html
+#' @param conn SparkRConnection object
+#' @param statement SQL statement to send
+#' @param params List of parameters for parametrised query
+#' @param immediate This parameter is ignored in SparkR implementation
+#' @param ... Extra parameters
 #' @export
 #' @examples
 #' \dontrun{
@@ -8,9 +13,22 @@
 #' dbWriteTable(db, "mtcars", mtcars)
 #' res <- dbSendQuery(db, "SELECT * FROM mtcars")
 #' }
-setMethod("dbSendQuery", "SparkRConnection", function(conn, statement, ...) {
-  # Executing query
+setMethod("dbSendQuery", "SparkRConnection", function(conn, statement, params=NULL, immediate=NULL, ...) {
+  # Creating SparkRResult environment
   state <- rlang::env(start=1, end=-1, completed=FALSE, cleared=FALSE, df=NULL, statement=statement)
 
-  new("SparkRResult", statement=statement, state=state, ...)
+  # Executing the query if: it is not parametrised OR params arguments permit to parametrise it totally
+  if (!is.null(params) && is.list(params)) {
+    params[["sql"]] <- statement
+    params[["conn"]] <- conn
+    
+    statement <- do.call(sqlInterpolate, params)
+  }
+  if (!grepl("\\?[^ ]", statement)) {
+    sql(statement)
+  } else {
+    message("Parametrised query with missing parameters.")
+  }
+
+  new("SparkRResult", statement=state$statement, state=state, ...)
 })

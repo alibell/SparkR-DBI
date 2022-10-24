@@ -9,6 +9,13 @@ DBI documentation: https://dbi.r-dbi.org/reference/dbFetch.html}
 \usage{
 \S4method{dbFetch}{SparkRResult}(res, n = -1, ...)
 }
+\arguments{
+\item{res}{SparkRResult object}
+
+\item{n}{Number of rows to fetch, if n=-1 all the rows are fetched}
+
+\item{...}{Extra parameters}
+}
 \description{
 dbFetch DBI method
 Fetch results from a SparkRResult object.

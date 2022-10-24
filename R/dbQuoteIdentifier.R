@@ -1,6 +1,8 @@
 #' dbQuoteIdentifier DBI method
 #' Generate quote to prevent SQL injection.
 #' DBI documentation: https://dbi.r-dbi.org/reference/dbQuoteIdentifier.html
+#' @param conn SparkRConnection object
+#' @param x String to encapsulate with quotes
 #' @export
 #' @examples
 #' \dontrun{
