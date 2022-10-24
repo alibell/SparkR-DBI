@@ -1,9 +1,11 @@
+#' @import DBI
+setOldClass("jobj")
+
 #' SparkR connection class.
 #'
 #' @name SparkRConnection
-#' @export
 #' @keywords internal
-setOldClass("jobj")
+#' @export
 setClass("SparkRConnection",
   contains = "DBIConnection",
   slots = list(
