@@ -6,10 +6,12 @@
 Parametrised query is not officialy supported in Spark environment, it is here managed with the sqlInterpolate method
 DBI documentation: https://dbi.r-dbi.org/reference/dbBind.html}
 \usage{
-\S4method{dbBind}{SparkRResult}(res, params, ...)
+\S4method{dbBind}{SparkRResult}(res, params = list(), ...)
 }
 \arguments{
 \item{res}{SparkRResult object}
+
+\item{params}{List of parameters to fill the parametrised query}
 
 \item{...}{Extra parameters}
 }

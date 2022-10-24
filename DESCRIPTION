@@ -5,7 +5,7 @@ Version: 0.0.1
 Author: Ali BELLAMINE
 Maintainer: Ali BELLAMINE <contact@alibellamine.me>
 Description: A DBI interface for SparkR Spark databases connector.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
     DBI (>= 0.3.0),

@@ -1,8 +1,7 @@
 #' SparkR DBI
-#' DBI backend for SparkR library.
 #'
+#' @description DBI backend for SparkR library.
 #' @docType package
-#'
 #' @author Ali BELLAMINE \email{contact@alibellamine.me}
 #'
 #' @name SparkRDBI

@@ -10,6 +10,8 @@ SparkR results class.
 \section{Slots}{
 
 \describe{
+\item{\code{conn}}{SparkRConnection object}
+
 \item{\code{state}}{Environment contaning the Result binded statement, the fetching location (start and end), output data and the cleared and completed state}
 
 \item{\code{statement}}{Original provided statement (before binding)}
