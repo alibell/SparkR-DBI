@@ -1,4 +1,15 @@
+#' dbFetch DBI method
+#' Fetch results from a SparkRResult object.
+#' As Spark doesn't support cursor, we simulate this by fetching and keeping in memory the whole DataFrame during the first fetch and then deliver the requested subparts of that DataFrame.
+#' DBI documentation: https://dbi.r-dbi.org/reference/dbFetch.html
 #' @export
+#' @examples
+#' \dontrun{
+#' db <- createSparkRConnection(sc=sc)
+#' dbWriteTable(db, "mtcars", mtcars)
+#' res <- dbGetQuery(db, "SELECT * FROM mtcars")
+#' dbFetch(res, n=10)
+#' }
 setMethod("dbFetch", "SparkRResult", function(res, n=-1, ...) {
   if (res@state[["completed"]]) {
     stop("All the results have been fetched")

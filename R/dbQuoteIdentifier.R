@@ -1,4 +1,12 @@
+#' dbQuoteIdentifier DBI method
+#' Generate quote to prevent SQL injection.
+#' DBI documentation: https://dbi.r-dbi.org/reference/dbQuoteIdentifier.html
 #' @export
+#' @examples
+#' \dontrun{
+#' db <- createSparkRConnection(sc=sc)
+#' dbQuoteIdentifier(db, "databaseName.columnName")
+#' }
 setMethod("dbQuoteIdentifier", signature(conn="SparkRConnection", x="character"), function(conn, x) {
     # Spitting according to dot
     string_components <- strsplit(x, "\\.")[[1]]

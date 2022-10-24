@@ -1,4 +1,13 @@
-#' Find the database data type associated with an R object
+#' dbDataType DBI method
+#' Find the database data type related with an R object
+#' This is performed by creating a Spark DF from the R object and thus letting Spark automatically cast the object.
+#' DBI documentation: https://dbi.r-dbi.org/reference/dbDataType.html
+#' @export
+#' @examples
+#' \dontrun{
+#' db <- createSparkRConnection(sc=sc)
+#' dbDataType(db, "test")
+#' }
 #' @export
 setMethod("dbDataType", signature(dbObj="SparkRConnection"), function(dbObj, obj, ...) {
   if (is.data.frame(obj)) {

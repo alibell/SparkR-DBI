@@ -1,4 +1,13 @@
+#' dbRemoveTable DBI method
+#' Remove a table according to its name.
+#' DBI documentation: https://dbi.r-dbi.org/reference/dbRemoveTable.html
 #' @export
+#' @examples
+#' \dontrun{
+#' db <- createSparkRConnection(sc=sc)
+#' dbWriteTable(db, "mtcars", mtcars)
+#' dbRemoveTable(db, "mtcars")
+#' }
 setMethod("dbRemoveTable", signature(conn="SparkRConnection", name="character"), function(conn, name, temporary=FALSE, fail_if_missing=TRUE, ...) {
     temporaryTables <- SparkR::collect(
         SparkR::select(

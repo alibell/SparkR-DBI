@@ -1,4 +1,12 @@
+#' dbWriteTable DBI method
+#' Write a table from a R dataframe.
+#' DBI documentation: https://dbi.r-dbi.org/reference/dbWriteTable.html
 #' @export
+#' @examples
+#' \dontrun{
+#' db <- createSparkRConnection(sc=sc)
+#' dbWriteTable(db, "mtcars", mtcars)
+#' }
 setMethod("dbWriteTable", "SparkRConnection", function(conn, name, value, append=FALSE, overwrite=FALSE, temporary=FALSE, row.names=FALSE, field.types=FALSE, ...) {
   df <- value
   hasRowName <- FALSE
