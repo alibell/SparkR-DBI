@@ -45,7 +45,6 @@ jobs:
           pak-version: devel
           extra-packages: |
             any::devtools
-            any:desc
             SparkR=?ignore
       - name: Installating SparkR
         run: |
