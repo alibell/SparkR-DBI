@@ -1,12 +1,9 @@
-name: test_and_publish
+name: test
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-  create:
-    tags:
-      - "v*"
 permissions:
   contents: read
 jobs:
@@ -54,24 +51,3 @@ jobs:
           devtools::load_all()
           devtools::test(reporter=c("progress", "fail"))
         shell: Rscript {0}
-  publish:
-    needs: [test]
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'create' }}
-    name: Generating release
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set last version number as environment variable
-        run: |
-          CURRENT_VERSION=$(R --slave -e "cat(as.character(desc::desc('./DESCRIPTION')\$get_version()))")
-          echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-      - name: Create release
-        if: ${{ env.RELEASE_VERSION == github.ref_name }}
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
