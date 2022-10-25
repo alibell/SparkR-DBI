@@ -56,7 +56,7 @@ jobs:
           devtools::test(reporter=c("progress", "fail"))
         shell: Rscript {0}
   publish:
-    need: [test]
+    needs: [test]
     if: ${{ github.event_name == 'create' }}
     name: Generating release
     steps:
