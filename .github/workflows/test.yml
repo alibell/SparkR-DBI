@@ -57,6 +57,7 @@ jobs:
         shell: Rscript {0}
   publish:
     needs: [test]
+    runs-on: ubuntu-latest
     if: ${{ github.event_name == 'create' }}
     name: Generating release
     steps:
